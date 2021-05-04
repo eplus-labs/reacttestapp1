@@ -1,0 +1,9 @@
+- create the web3 file in the root of the react src directory 
+    -find sample file in the modern react lottery-react > src directory
+    -ensure that it is working properly by using a console.log within app.js 
+        - ensure import of web3 file into app.js and then (console.log(web3.version))
+        -test further by attempting to log account via:
+          web3.eth.getAccounts()
+            .then(console.log)
+
+-go thru the videos and related activites beginning with video 94 (deploying the lottery contract)

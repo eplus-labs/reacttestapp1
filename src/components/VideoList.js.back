@@ -1,0 +1,15 @@
+import React from "react"
+import VideoItem from "./VideoItem"
+
+const VideoList = ({ videos, onVideoSelect }) => {
+    console.log("Video from with VideoList: ", videos)
+    const renderedList = videos.map((video) => {
+        return <VideoItem key={video.EmbedID} onVideoSelect={onVideoSelect} video={video} />
+    })
+
+    return (
+        <div className="ui relaxed item list">{renderedList}</div>
+    )
+}
+
+export default VideoList

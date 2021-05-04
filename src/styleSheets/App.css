@@ -1,0 +1,9 @@
+.main-app {
+    background-color: #233255;
+    height: 100vh;
+}
+
+#price-tracker {
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+}

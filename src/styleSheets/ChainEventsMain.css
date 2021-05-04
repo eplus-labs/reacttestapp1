@@ -1,0 +1,14 @@
+div {
+    color: white;
+}
+
+#events-current-support {
+    color: white;
+}
+
+#chain-events-form {
+    margin-top: 2vh;
+    padding-bottom: 2vh;
+    margin-right: 1vw;
+    margin-left: 1vw;
+}

@@ -1,0 +1,26 @@
+.outer-class {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color:#1a294d;
+    color: white;
+    width: 100vw;
+    height: 10vh;
+    padding: 0vh;
+}
+
+.price {
+    color: #7dee04;
+    font-weight: bold;
+}
+
+#header-main {
+    background-color: #233255;
+    margin-bottom: 0vh;
+    padding-bottom: 0vh;
+}
+
+#text-style {
+    color: white;
+}

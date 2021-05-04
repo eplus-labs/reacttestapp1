@@ -1,0 +1,48 @@
+import React from "react"
+import { connect } from "react-redux"
+
+let events = []
+
+class ChainEventsDisplay extends React.Component {
+
+    renderEvents() {
+
+
+        if (this.props.contractEventsArray.length === 0) {
+            return "Loading..."
+        } 
+
+        console.log("props from render events: ", this.props.contractEventsArray)
+
+
+
+        const items = this.props.contractEventsArray.map((event) => {
+            console.log("event from within map: ", event[0])
+            return (
+                <div>
+                    <br/>
+                    <div>Transaction from: {event.blockHash}</div>
+                    <br/>
+
+                </div>
+            )
+        })
+        return items
+    }
+
+    render() {
+        return (
+            <div>
+                {this.renderEvents()}
+            </div>
+        )
+    }
+}
+
+
+const mapStateToProps = state => {
+    console.log("state from within mapstatetoprops: ", state.contractEvent)
+    return { contractEventsArray: state.contractEvent }
+}
+
+export default connect(mapStateToProps)(ChainEventsDisplay)
