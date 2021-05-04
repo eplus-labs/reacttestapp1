@@ -1,4 +1,4 @@
-.outer-class-lottery {
+#outer-class-lottery {
     display: flex;
     flex-flow: column;
     justify-content: space-around;
@@ -16,4 +16,8 @@
     color: #f5bd01;
     font-weight: bold;
     font-size: xx-large;
+}
+
+.lottery-text-decoration {
+    color: white;
 }

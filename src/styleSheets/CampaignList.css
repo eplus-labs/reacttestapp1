@@ -1,3 +1,11 @@
-* {
+campaign-events {
     color: white;
+}
+
+h3 {
+    color: white;
+}
+
+.campaign-list-main {
+    margin-top: 10vh;;
 }

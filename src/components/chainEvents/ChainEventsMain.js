@@ -57,6 +57,7 @@ class ChainEventsMain extends React.Component {
             <div id="chain-events-form">
                 <PriceTicker />
                 <h3 id="events-current-support">Rendering Tether Data on Initial Load and Across Last Ten Blocks</h3>
+                <h3 id="events-current-support">Sample Integrations Included - OMG Network and Tether ERC-20 Contracts</h3>
                 <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="ui form error">
                     <Field name="contractAddress" component={this.renderInput} label={<CustomLabelContractAddress />} />
                     <Field name="contractAbi" component={this.renderInput} label={<CustomLabelContractAbi />} />

@@ -20,6 +20,9 @@ const Header = () => {
             <Link to="/campaigns" className="item" id="text-style">
                 CrowdChain
             </Link>
+            <Link to="/chaineventsmain" className="item" id="text-style">
+                ChainEvents
+            </Link>
             <div className="right menu">
                 <GoogleAuth />
             </div>

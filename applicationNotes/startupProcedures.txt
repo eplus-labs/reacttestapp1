@@ -1,0 +1,4 @@
+-current running development version of react
+
+-controlling the automatic startup of application via pm2
+(https://stackoverflow.com/questions/52070370/running-react-while-rebooting-ubuntu-server/52070431)

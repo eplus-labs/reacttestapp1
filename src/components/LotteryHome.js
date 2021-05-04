@@ -66,14 +66,15 @@ class LotteryHome extends React.Component {
         return (
             <div>
                 <div id="price-tracker"><PriceTicker /></div>
-                <div className="outer-class-lottery">
+                <div id="outer-class-lottery">
+                    <h3>Distributed Application Requires Local Metmask Instance.  Use Rinkby Test Network.</h3>
                     <h2 className='lottery-highlight-text'>Lottery Contract</h2>
                     <div>
-                        <p> This contract is managed by:
+                        <p className="lottery-text-decoration"> This contract is managed by:
                             <span style={{paddingLeft:"12px"}}></span>
                             {this.state.manager}
                         </p>
-                        <p>
+                        <p className="lottery-text-decoration">
                             There are currently {this.state.players.length} people entered,
                             <span style={{paddingLeft:"8px"}}></span> 
                             competing to win {web3.utils.fromWei(this.state.balance, "ether")} ether!

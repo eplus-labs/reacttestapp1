@@ -43,7 +43,7 @@ class VideoPage extends React.Component {
     render() {
         console.log("Props.videos: ",this.props.videos)
         return (
-                <div className="page">
+                <div className="video-page-main">
                     <div id="price-tracker"><PriceTicker /></div>
                     <div className="ui container">
                         <div className="ui grid">

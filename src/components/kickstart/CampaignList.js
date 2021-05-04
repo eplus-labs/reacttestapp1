@@ -35,10 +35,11 @@ class CampaignList extends React.Component {
     // The Button element comes from semantic UI
     render() {
         return (
-                <div>
+                <div id="video-page-main">
                     <KickstartHeader />
                     <Container>
-                        <div>
+                        <div className="campaign-list-main">
+                            <h3>Distributed Application Requires Local Metmask Instance.  Use Rinkby Test Network.</h3>
                             <h3>Open Campaigns</h3>
                             <Link to="/campaigns/new">
                                 <Button
