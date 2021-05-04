@@ -12,7 +12,7 @@ const KickstartHeader = (props) => {
             <Container className="kickstart-header-main">
                 <Menu>
                     <Link className="item" to="/campaigns">
-                        CrownChain
+                        CrowdChain
                     </Link> 
 
                     <Menu.Menu position="right">

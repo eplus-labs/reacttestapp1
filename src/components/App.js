@@ -17,7 +17,7 @@ const App = () => {
             <BrowserRouter>
                 <div className="main-app">
                     <Header />
-                    <Route path="/" exact component={VideoPage} />
+                    <Route path="/" exact component={ChainEventsMain} />
                     <Route path="/priceticker" component={PriceTicker} />
                     <Route path="/lotteryhome" component={LotteryHome} />
                     <Route path="/currency" component={VideoPage} />
