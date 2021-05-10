@@ -10,6 +10,7 @@ import IndividualCampaign from "./kickstart/IndividualCampaign"
 import CampaignRequestList from "./kickstart/CampaignRequestList"
 import ChainEventsMain from "./chainEvents/ChainEventsMain"
 import CampaignRequestNew from "./kickstart/CampaignRequestNew"
+import VideoPost from "./VideoPost"
 
 const App = () => {
     return (
@@ -32,6 +33,7 @@ const App = () => {
                     <Route path="/campaigns/:address/requests" exact component={CampaignRequestList} />
                     <Route path="/chaineventsmain" component={ChainEventsMain} />
                     <Route path="/campaigns/:address/requests/new" component={CampaignRequestNew} />
+                    <Route path="/videopost!!!" component={VideoPost} />
                 </div>
             </BrowserRouter>
         </div>

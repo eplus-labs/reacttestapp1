@@ -40,7 +40,7 @@ class CampaignRequestNew extends React.Component {
                 recipient
                 ).send({ from: accounts[0] })
 
-                this.nextPath('/campaigns/{this.props.address}/requests')
+                this.nextPath(`/campaigns/${address}/requests`)
         } catch (err) {
             this.setState({ errorMessage: err.message })
         }
@@ -53,7 +53,7 @@ class CampaignRequestNew extends React.Component {
         return (
             <div>
                 <KickstartHeader />
-                <Link to={`/campaigns/{this.props.match.params.address}/requests`}>
+                <Link to={`/campaigns/${this.props.match.params.address}/requests`}>
                     Back
                 </Link>
                 <h3>Create a Request</h3>

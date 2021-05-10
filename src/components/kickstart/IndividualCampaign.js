@@ -15,6 +15,11 @@ let requestsCount
 let approversCount
 
 class IndividualCampaign extends React.Component {
+    state = {
+        manager: ""
+    }
+
+
     async componentDidMount() {
         const campaign = Campaign(this.props.match.params.address)
 
@@ -31,13 +36,17 @@ class IndividualCampaign extends React.Component {
         }
         requestsCount = summary[2]
         approversCount = summary[3]
-        manager = summary[4]
+        // manager = summary[4]
+        this.setState({ manager: summary[4] })
+
+        console.log("minimum contribution: ", minimumContribution)
+        console.log("balance: ", balance)
     }
 
     renderCards() {
         const items = [
             {
-                header: manager,
+                header: this.state.manager,
                 meta: "Address of Manager",
                 description: "The manager created this campaign and can create requests to withdraw money",
                 style: { overflowWrap: "break-word" }

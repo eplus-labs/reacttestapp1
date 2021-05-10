@@ -1,4 +1,7 @@
 -current running development version of react
 
+cd /path/to/app
+pm2 start npm -- start
+
 -controlling the automatic startup of application via pm2
-(https://stackoverflow.com/questions/52070370/running-react-while-rebooting-ubuntu-server/52070431)
+https://stackoverflow.com/questions/52070370/running-react-while-rebooting-ubuntu-server/52070431

@@ -67,3 +67,10 @@ export const contractDetails = formValues =>  async dispatch => {
     })
     dispatch({ type: "CONTRACT_EVENTS", payload: response })
 }
+
+
+export const createVideoRef = formValues => async dispatch => {
+    const response = videoDbApi.post("/postvideo", formValues)
+
+    dispatch({ type: "CREATE_VIDEO_REF", payload: response })
+}
