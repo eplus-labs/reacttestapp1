@@ -8,6 +8,7 @@ import CampaignRequestRow from "./CampaignRequestRow"
 let addressFromProps
 let requests = []
 let approversCount
+let requestCount
 
 
 class CampaignRequestList extends React.Component {
@@ -23,7 +24,7 @@ class CampaignRequestList extends React.Component {
         this.setState({address: addressFromProps})
 
         const campaign = await Campaign(this.state.address)
-        const requestCount = await campaign.methods.getRequestsCount().call()
+        requestCount = await campaign.methods.getRequestsCount().call()
         approversCount = await campaign.methods.approversCount().call()
         this.setState({ approversCount: approversCount})
 
@@ -65,7 +66,7 @@ class CampaignRequestList extends React.Component {
                 <KickstartHeader />
                 CampaignRequestList
                 <Link to={`/campaigns/${this.props.match.params.address}/requests/new`}>
-                    <Button primary>Add Request</Button>
+                    <Button primary floated="right" style={{marginBottom: 10}}>Add Request</Button>
                 </Link>
                 <Table>
                     <Header>
@@ -83,6 +84,7 @@ class CampaignRequestList extends React.Component {
                         {this.renderRow()}
                     </Body>
                 </Table>
+                <div>Found {requestCount} requests </div>
             </div>
         )
     }

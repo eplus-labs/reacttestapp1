@@ -29,21 +29,24 @@ class CampaignRequestRow extends React.Component {
 
     render() {
         const { Row, Cell } = Table
-        console.log("from within render of request row")
-        console.log("from within render of request row - request: ", this.props.request)
+        const readyToFinalize = this.props.request.approvalCount > this.props.approversCount / 2
 
         return (
-            <Row>
+            <Row disabled={this.props.request.complete} positive={readyToFinalize && !this.props.request.complete}>
                 <Cell>{id}</Cell>
                 <Cell>{this.props.request.description}</Cell>
                 <Cell>{web3.utils.fromWei(this.props.request.value, "ether")}</Cell>
                 <Cell>{this.props.request.recipient}</Cell>
                 <Cell>{this.props.request.approvalCount}/{this.props.approversCount}</Cell>
                 <Cell>
-                    <Button color="green" basic onClick={this.onApprove}>Approve</Button>
+                    {this.props.request.complete ? null : (
+                        <Button color="green" basic onClick={this.onApprove}>Approve</Button>
+                    )}
                 </Cell>
                 <Cell>
-                    <Button color="teal" basic onClick={this.onFinalize}>Finalize</Button>
+                    {this.props.request.complete ? null : (
+                        <Button color="teal" basic onClick={this.onFinalize}>Finalize</Button>
+                    )}
                 </Cell>
             </Row>
         )
