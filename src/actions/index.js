@@ -70,7 +70,7 @@ export const contractDetails = formValues =>  async dispatch => {
 
 
 export const createVideoRef = formValues => async dispatch => {
-    const response = videoDbApi.post("/postvideo", formValues)
+    const response = await videoDbApi.post("/postvideo", formValues)
 
     dispatch({ type: "CREATE_VIDEO_REF", payload: response })
 }
