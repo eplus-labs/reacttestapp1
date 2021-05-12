@@ -18,8 +18,12 @@ class VideoPage extends React.Component {
             this.props.listofVideos("ethereum") 
         } else if (this.props.location.pathname === "/nft") {
             this.props.listofVideos("nft") 
+        } else if (this.props.location.pathname === "/defi") {
+            this.props.listofVideos("defi")
+        } else if (this.props.location.pathname === "/blockchain") {
+            this.props.listofVideos("blockchain")
         } else if (this.props.location.pathname === "/") {
-            this.props.listofVideos("currency") 
+            this.props.listofVideos("currency")
         } else {
             this.props.listofVideos("currency") 
         }

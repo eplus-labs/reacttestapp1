@@ -18,12 +18,13 @@ const App = () => {
             <BrowserRouter>
                 <div className="main-app">
                     <Header />
-                    <Route path="/" exact component={ChainEventsMain} />
+                    <Route exact path="/" component={VideoPage} />
                     <Route path="/priceticker" component={PriceTicker} />
                     <Route path="/lotteryhome" component={LotteryHome} />
                     <Route path="/currency" component={VideoPage} />
                     <Route path="/nft" component={VideoPage} />
                     <Route path="/defi" component={VideoPage} />
+                    <Route path="/blockchain" component={VideoPage} />
                     <Route path="/ethereum" component={VideoPage} />
                     <Route path="/apps" component={VideoPage} />
                     <Route path="/identity" component={VideoPage} />

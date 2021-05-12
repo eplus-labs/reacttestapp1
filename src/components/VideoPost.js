@@ -2,6 +2,29 @@ import React from "react"
 import {Field, reduxForm } from "redux-form"
 import { connect } from "react-redux"
 import { createVideoRef } from "../actions"
+import PriceTicker from "./PriceTicker"
+import "../styleSheets/VideoPost.css"
+
+const EnterVideoName = () => {
+    var labelStyle = {
+         color: 'white'
+       };
+   return <label style={labelStyle}> Enter video name </label>
+   }
+
+const EnterVideoCategory = () => {
+    var labelStyle = {
+         color: 'white'
+       };
+   return <label style={labelStyle}> Enter video category (currency, ethereum, nft, blockchain, defi) </label>
+   }
+
+const EnterYouTubeEmbedID = () => {
+    var labelStyle = {
+         color: 'white'
+       };
+   return <label style={labelStyle}> Enter YouTube Embed ID </label>
+   }
 
 class VideoPost extends React.Component {
     renderError({ error, touched }) {
@@ -31,12 +54,16 @@ class VideoPost extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="ui form error">
-                <Field name="name" component={this.renderInput} label="Enter video name"/>
-                <Field name="category" component={this.renderInput} label="Enter video category" />
-                <Field name="embedId" component={this.renderInput} label="Enter YouTube EmbedID" />
-                <button className="ui button primary">Submit</button>
-            </form>
+            <div id="video-post-main">
+                <PriceTicker />
+                <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="ui form error" id="video-post-form">
+                    <Field name="name" component={this.renderInput} label={<EnterVideoName />} />
+                    <Field name="category" component={this.renderInput} label={<EnterVideoCategory />} />
+                    <Field name="embedId" component={this.renderInput} label={<EnterYouTubeEmbedID />} />
+                    <button className="ui button primary">Submit</button>
+                </form>
+            </div>
+
         )
     }
 }
