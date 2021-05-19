@@ -16,12 +16,6 @@ class CampaignList extends React.Component {
         // let jsonResponse = JSON.stringify(response)
         let campaigns = JSON.parse(response)
 
-        console.log("response from kickstart get all campaigns api: ", response)
-        console.log("response from kickstart get all campaigns api type of: ", typeof response)
-
-        console.log("response from kickstart get all campaigns api: ", campaigns[0])
-
-
         this.setState({campaigns})
     }
 
