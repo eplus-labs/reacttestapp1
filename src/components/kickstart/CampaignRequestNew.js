@@ -4,6 +4,8 @@ import Campaign from "./ethereum/campaign"
 import web3 from "./ethereum/web3"
 import { Link } from "react-router-dom"
 import KickstartHeader from "./KickstartHeader"
+import "../../styleSheets/CampaignRequestNew.css"
+
 
 let address
 
@@ -57,9 +59,9 @@ class CampaignRequestNew extends React.Component {
                     Back
                 </Link>
                 <h3>Create a Request</h3>
-                <Form onSubmit={this.onSubmit} error={!!this.state.errorMessage} >
+                <Form onSubmit={this.onSubmit} error={!!this.state.errorMessage} id="request-new-form-outer">
                     <Form.Field>
-                        <label>Description</label>
+                        <label style={{color: "white"}}>Description</label>
                         <Input 
                         value={this.state.description}
                         onChange={event => this.setState({description: event.target.value})}
@@ -67,7 +69,7 @@ class CampaignRequestNew extends React.Component {
                     </Form.Field>
 
                     <Form.Field>
-                        <label>Value in Ether</label>
+                        <label style={{color: "white"}}>Value in Ether</label>
                         <Input 
                         value={this.state.value}
                         onChange={event => this.setState({value: event.target.value})}
@@ -75,7 +77,7 @@ class CampaignRequestNew extends React.Component {
                     </Form.Field>
 
                     <Form.Field>
-                        <label>Recipient</label>
+                        <label style={{color: "white"}}>Recipient</label>
                         <Input 
                         value={this.state.recipient}
                         onChange={event => this.setState({recipient: event.target.value})}

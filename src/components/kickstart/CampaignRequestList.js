@@ -4,6 +4,7 @@ import { Button, Table } from "semantic-ui-react"
 import { Link } from "react-router-dom"
 import Campaign from "./ethereum/campaign"
 import CampaignRequestRow from "./CampaignRequestRow"
+import "../../styleSheets/CampaignRequestList.css"
 
 let addressFromProps
 let requests = []
@@ -18,7 +19,6 @@ class CampaignRequestList extends React.Component {
     }
 
     async componentDidMount() {
-        console.log("within component did mount")
         addressFromProps = await this.props.match.params.address
         
         this.setState({address: addressFromProps})
@@ -26,23 +26,17 @@ class CampaignRequestList extends React.Component {
         const campaign = await Campaign(this.state.address)
         requestCount = await campaign.methods.getRequestsCount().call()
         approversCount = await campaign.methods.approversCount().call()
-        this.setState({ approversCount: approversCount})
 
-        console.log("camoaign from component did mount: ", campaign)
-        console.log("request count: ", requestCount)
 
         requests = await Promise.all(
             Array(parseInt(requestCount)).fill().map((element, index) => {
                 return campaign.methods.requests(index).call()
             })
         )
+        this.setState({ approversCount: approversCount})    
     }
 
     renderRow() {
-        console.log("within render row = approvers count: ", this.state.approversCount)
-        console.log("requests within render row: ", requests)
-
-        console.log("length of requests: ", requests.length)
 
         if (requests.length === 0) {
             return
@@ -64,7 +58,7 @@ class CampaignRequestList extends React.Component {
         return (
             <div>
                 <KickstartHeader />
-                CampaignRequestList
+                <div className="white-text" id="top-level-text">CampaignRequestList</div>  
                 <Link to={`/campaigns/${this.props.match.params.address}/requests/new`}>
                     <Button primary floated="right" style={{marginBottom: 10}}>Add Request</Button>
                 </Link>
@@ -84,7 +78,7 @@ class CampaignRequestList extends React.Component {
                         {this.renderRow()}
                     </Body>
                 </Table>
-                <div>Found {requestCount} requests </div>
+                <div className="white-text">Found {requestCount} requests </div>
             </div>
         )
     }

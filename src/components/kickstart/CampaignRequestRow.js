@@ -33,7 +33,7 @@ class CampaignRequestRow extends React.Component {
 
         return (
             <Row disabled={this.props.request.complete} positive={readyToFinalize && !this.props.request.complete}>
-                <Cell>{id}</Cell>
+                <Cell>{this.props.id}</Cell>
                 <Cell>{this.props.request.description}</Cell>
                 <Cell>{web3.utils.fromWei(this.props.request.value, "ether")}</Cell>
                 <Cell>{this.props.request.recipient}</Cell>

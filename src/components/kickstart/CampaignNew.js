@@ -3,19 +3,27 @@ import { Form, Button, Input, Message } from "semantic-ui-react"
 import KickstartHeader from "./KickstartHeader"
 import factory from "../kickstart/ethereum/factory"
 import web3 from "../kickstart/ethereum/web3"
+import kickstartApiPost from "../../apis/kickstartApi"
+import { kickstartApiGetByName } from "../../apis/kickstartApi"
+import "../../styleSheets/CampaignNew.css"
 
 class CampaignNew extends React.Component {
     state = {
         value: '',
         errorMessage: '',
-        loading: false
+        loading: false,
+        campaignName: '',
+        campaignDescription: '',
+        minimumContribution: ''
       };
 
     nextPath(path) {
-    this.props.history.push(path);
+        this.props.history.push(path);
     }
 
     onSubmit = async (event) => {
+        console.log("State within on submit: ", this.state)
+
         event.preventDefault()
 
         this.setState({ loading: true, errorMessage: '' });
@@ -23,12 +31,31 @@ class CampaignNew extends React.Component {
         try {
             const accounts = await web3.eth.getAccounts()
             await factory.methods.createCampaign(this.state.minimumContribution)
-                .send({
+            // await factory.methods.createCampaign(this.state.minimumContribution)
+            .send({
                     from: accounts[0]
                 })
             
-            this.nextPath('/campaigns')
+            const campaigns = await factory.methods.getDeployedCampaigns().call()
+
+            console.log("Lenght of campaigns from CampaignNew: ", campaigns.length)
+            console.log("Last campaign of campaigns from CampaignNew: ", campaigns[campaigns.length - 1])
+
+
             
+            let apiPostData = {
+                CampaignAddress: campaigns[campaigns.length - 1],
+                MinimumContribution: this.state.minimumContribution,
+                CampaignName: this.state.campaignName,
+                CampaignDescription: this.state.campaignDescription
+            }
+
+            let jsonAPIData = JSON.stringify(apiPostData)
+
+            await kickstartApiPost(jsonAPIData)
+
+            this.nextPath('/campaigns')
+
         } catch (err) {
             this.setState({ errorMessage: err.message });
           }
@@ -36,15 +63,37 @@ class CampaignNew extends React.Component {
         this.setState({ loading: false })
     }
 
+
     render() {
         // Form, Button, Input, and Message components below are imported from Semantic UI for CSS styling
         return (
             <div>
                 <KickstartHeader />
-                <h3>Create a Campaign</h3>
-                <Form onSubmit={this.onSubmit} error={!!this.state.errorMessage}>
+                <h3 style={{color: "white"}}>Create a Campaign</h3>
+                <Form onSubmit={this.onSubmit} error={!!this.state.errorMessage} id="campaign-new-main">
+
                     <Form.Field>
-                        <label>Minimum Contribution</label>
+                        <label style={{color: "white"}}>Campaign Name</label>
+                        <Input 
+                            value={this.state.campaignName}
+                            onChange={(event) => {
+                                this.setState({ campaignName: event.target.value })
+                            }}
+                        />
+                    </Form.Field>
+
+                    <Form.Field>
+                        <label style={{color: "white"}}>Campaign Description</label>
+                        <Input 
+                            value={this.state.campaignDescription}
+                            onChange={(event) => {
+                                this.setState({ campaignDescription: event.target.value })
+                            }}
+                        />
+                    </Form.Field>
+
+                    <Form.Field>
+                        <label style={{color: "white"}}>Minimum Contribution</label>
                         <Input 
                             label="wei" 
                             labelPosition="right" 

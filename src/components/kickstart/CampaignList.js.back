@@ -3,24 +3,12 @@ import { Card, Button, Container } from "semantic-ui-react"
 import factory from "./ethereum/factory"
 import KickstartHeader from "./KickstartHeader"
 import { Link } from "react-router-dom"
-import { kickstartApiGetAllCampaigns } from "../../apis/kickstartApi"
 import "../../styleSheets/CampaignList.css"
 
 class CampaignList extends React.Component {
     state = {campaigns: []}
     async componentDidMount() {
-
-        // const campaigns = await factory.methods.getDeployedCampaigns().call()
-
-        let response = await kickstartApiGetAllCampaigns()
-        // let jsonResponse = JSON.stringify(response)
-        let campaigns = JSON.parse(response)
-
-        console.log("response from kickstart get all campaigns api: ", response)
-        console.log("response from kickstart get all campaigns api type of: ", typeof response)
-
-        console.log("response from kickstart get all campaigns api: ", campaigns[0])
-
+        const campaigns = await factory.methods.getDeployedCampaigns().call()
 
         this.setState({campaigns})
     }
@@ -32,13 +20,11 @@ class CampaignList extends React.Component {
             return "Loading..."
         }
 
-        const items = this.state.campaigns.map((campaign) => {
-            let addressPlusContribution = "Campaign Address: " + campaign.CampaignAddress + " ------- " + "Minimum Contribution: " + campaign.MinimumContribution
+        const items = this.state.campaigns.map((address) => {
             return {
-                header: campaign.CampaignName,
-                meta: addressPlusContribution,
+                header: address,
                 description: (
-                    <Link to={`/campaign/${campaign.CampaignAddress}`}>View Campaign</Link>
+                    <Link to={`/campaign/${address}`}>View Campaign</Link>
                 ),
                 fluid: true
             }
