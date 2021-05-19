@@ -2,7 +2,7 @@ import React from "react"
 import KickstartHeader from "./KickstartHeader"
 import Campaign from "./ethereum/campaign"
 import ContributeForm from "./ContributeForm"
-import web3 from "./ethereum/web3"
+import ethEnabled from "./ethereum/web3"
 import { Link } from "react-router-dom"
 import { Card, Grid, Button } from "semantic-ui-react"
 
@@ -21,7 +21,7 @@ class IndividualCampaign extends React.Component {
 
 
     async componentDidMount() {
-        const campaign = Campaign(this.props.match.params.address)
+        const campaign = await Campaign(this.props.match.params.address)
 
         address = this.props.match.params.address
 
@@ -44,6 +44,15 @@ class IndividualCampaign extends React.Component {
     }
 
     renderCards() {
+        let web3 = ethEnabled()
+        let campaignBalance
+
+        if (web3.utils === undefined) {
+            campaignBalance = "loading"
+        } else {
+            campaignBalance = web3.utils.fromWei(bnBalance.toString(), "ether")
+        }
+
         const items = [
             {
                 header: this.state.manager,
@@ -67,7 +76,7 @@ class IndividualCampaign extends React.Component {
                 description: "Number of people who have already donated to this campaign"
             },
             {
-                header: web3.utils.fromWei(bnBalance.toString(), "ether"),
+                header: campaignBalance,
                 meta: "Campaign Balance (Ether)",
                 description: "The balance is how much money this campaign has left to spend."
             }

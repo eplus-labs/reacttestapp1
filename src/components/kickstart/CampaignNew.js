@@ -2,7 +2,7 @@ import React from "react"
 import { Form, Button, Input, Message } from "semantic-ui-react"
 import KickstartHeader from "./KickstartHeader"
 import factory from "../kickstart/ethereum/factory"
-import web3 from "../kickstart/ethereum/web3"
+import ethEnabled from "../kickstart/ethereum/web3"
 import kickstartApiPost from "../../apis/kickstartApi"
 import { kickstartApiGetByName } from "../../apis/kickstartApi"
 import "../../styleSheets/CampaignNew.css"
@@ -29,6 +29,7 @@ class CampaignNew extends React.Component {
         this.setState({ loading: true, errorMessage: '' });
 
         try {
+            let web3 = ethEnabled()
             const accounts = await web3.eth.getAccounts()
             await factory.methods.createCampaign(this.state.minimumContribution)
             // await factory.methods.createCampaign(this.state.minimumContribution)
