@@ -1,7 +1,7 @@
 import React from "react"
 import { Form, Button, Message, Input } from "semantic-ui-react"
 import Campaign from "./ethereum/campaign"
-import web3 from "./ethereum/web3"
+import ethEnabled from "./ethereum/web3"
 import { Link } from "react-router-dom"
 import KickstartHeader from "./KickstartHeader"
 import "../../styleSheets/CampaignRequestNew.css"
@@ -29,12 +29,14 @@ class CampaignRequestNew extends React.Component {
     onSubmit = async event => {
         event.preventDefault()
 
-        const campaign = Campaign(address)
+        const campaign = await Campaign(address)
         const { value, description, recipient } = this.state
 
         this.setState({ loading: true, errorMessage: ""})
 
         try {
+            console.log("***eithin request new onsubmit")
+            let web3 = await ethEnabled()
             const accounts = await web3.eth.getAccounts()
             await campaign.methods.createRequest(
                 description,

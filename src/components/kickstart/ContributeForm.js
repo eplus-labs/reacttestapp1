@@ -1,6 +1,6 @@
 import React from "react"
 import Campaign from "./ethereum/campaign"
-import web3 from "./ethereum/web3"
+import ethEnabled from "./ethereum/web3"
 import { withRouter } from "react-router-dom"
 import { Form, Input, Message, Button } from "semantic-ui-react"
 
@@ -14,7 +14,9 @@ class ContributeForm extends React.Component {
     onSubmit = async (event) => {
         event.preventDefault()
 
-        const campaign = Campaign(this.props.address)
+        let web3 = await ethEnabled()
+
+        const campaign = await Campaign(this.props.address)
 
         this.setState({loading: true, errorMessage: ""})
 
@@ -44,7 +46,7 @@ class ContributeForm extends React.Component {
         return (
             <Form onSubmit={this.onSubmit} error={!!this.state.errorMessage}>
                 <Form.Field>
-                    <label>Amount to Contribute</label>
+                    <label style={{color: "white"}}>Amount to Contribute</label>
                     <Input
                     value={this.state.value}
                     onChange={(event) => this.setState({ value: event.target.value })}
