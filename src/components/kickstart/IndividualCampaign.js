@@ -16,18 +16,13 @@ let approversCount
 
 class IndividualCampaign extends React.Component {
     state = {
-        manager: "",
-        campaignBalance: ""
-    }
+        manager: ""
+        }
 
 
     async componentDidMount() {
 
         let web3 = await ethEnabled()
-
-        if (web3.utils !== undefined) {
-            this.setState({campaignBalance: web3.utils.fromWei(bnBalance.toString(), "ether")})
-        }
 
         const campaign = await Campaign(this.props.match.params.address)
 
@@ -40,7 +35,7 @@ class IndividualCampaign extends React.Component {
         if (balance === "0") {
             bnBalance = "0"
         } else {
-            bnBalance = balance.toString()
+            bnBalance = web3.utils.fromWei(balance.toString(), "ether")
         }
         requestsCount = summary[2]
         approversCount = summary[3]
@@ -74,7 +69,7 @@ class IndividualCampaign extends React.Component {
                 description: "Number of people who have already donated to this campaign"
             },
             {
-                header: this.state.campaignBalance,
+                header: bnBalance,
                 meta: "Campaign Balance (Ether)",
                 description: "The balance is how much money this campaign has left to spend."
             }

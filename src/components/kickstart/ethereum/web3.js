@@ -24,9 +24,10 @@ const ethEnabled = async () => {
     console.log("within web3 - current provider within else = ", window.ethereum)
     // We are on the server *OR* the user is not running metamask
     const provider = new Web3.providers.HttpProvider(
-      'https://rinkeby.infura.io/orDImgKRzwNrVCDrAk5Q'
+      'https://rinkeby.infura.io/v3/daa0d7c6783a4b37a8ff893efd22253a'
     );
     web3 = new Web3(provider);
+    return web3
   }
 
 }
