@@ -5,6 +5,8 @@ import { createVideoRef } from "../actions"
 import PriceTicker from "./PriceTicker"
 import "../styleSheets/VideoPost.css"
 
+let submittedStatus = false
+
 const EnterVideoName = () => {
     var labelStyle = {
          color: 'white'
@@ -49,6 +51,7 @@ class VideoPost extends React.Component {
     }
 
     onSubmit = (formValues) => {
+        submittedStatus = true
         this.props.createVideoRef(formValues)
     }
 
@@ -61,9 +64,13 @@ class VideoPost extends React.Component {
                     <Field name="category" component={this.renderInput} label={<EnterVideoCategory />} />
                     <Field name="embedId" component={this.renderInput} label={<EnterYouTubeEmbedID />} />
                     <button className="ui button primary">Submit</button>
+                    {this.props.video && submittedStatus ? <h3 style={{color: "white"}}>Video Submitted to Database</h3> : <div></div>}
+                    {this.props.video && submittedStatus ? <div style={{color: "white"}}>Video Name: &nbsp;&nbsp; {this.props.video.name}</div> : <div></div>}
+                    {this.props.video && submittedStatus ? <div style={{color: "white"}}>Video Category: &nbsp;&nbsp; {this.props.video.category}</div> : <div></div>}
+                    {this.props.video && submittedStatus ? <div style={{color: "white"}}>Video EmbedID: &nbsp;&nbsp; {this.props.video.embedId}</div> : <div></div>}    
                 </form>
+         
             </div>
-
         )
     }
 }
@@ -87,9 +94,16 @@ const validate = (formValues) => {
 
 }
 
+const mapStateToProps = state => {
+    if (state.form.videoPost !== undefined) {
+        return { video: state.form.videoPost.values}
+    }
+    return { video: "null"}
+}
+
 const formWrapped = reduxForm({
     form: "videoPost",
     validate
 })(VideoPost)
 
-export default connect(null, { createVideoRef })(formWrapped)
+export default connect(mapStateToProps, { createVideoRef })(formWrapped)

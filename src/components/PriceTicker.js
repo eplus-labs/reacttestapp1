@@ -20,14 +20,14 @@ var formatter = new Intl.NumberFormat('en-US', {
 
 let binanceSocketBTC = new WebSocket("wss://stream.binance.com:9443/ws/btcusdt@trade")
 let binanceSocketETH = new WebSocket("wss://stream.binance.com:9443/ws/ethusdt@trade")
-let binanceSocketEOS = new WebSocket("wss://stream.binance.com:9443/ws/eosusdt@trade")
+let binanceSocketALGO = new WebSocket("wss://stream.binance.com:9443/ws/algousdt@trade")
 let binanceSocketATOM = new WebSocket("wss://stream.binance.com:9443/ws/atomusdt@trade")
 
 
 
 
 class PriceTicker extends React.Component {
-    state = {btcPrice: "", ethPrice: "", eosPrice: "", atomPrice: ""}
+    state = {btcPrice: "", ethPrice: "", algoPrice: "", atomPrice: ""}
 
 
     componentDidMount() {
@@ -55,11 +55,11 @@ class PriceTicker extends React.Component {
             })
         }
         
-        binanceSocketEOS.onmessage = (event) => {
+        binanceSocketALGO.onmessage = (event) => {
             let objectData = JSON.parse(event.data)
             let currency = formatter.format(objectData.p)
             this.setState({
-                eosPrice: currency
+                algoPrice: currency
             })
         }
     }
@@ -80,8 +80,8 @@ class PriceTicker extends React.Component {
                     <div className="price">{this.state.atomPrice}</div>
                 </div>
                 <div>
-                    <div>EOS / USD:</div>
-                    <div className="price">{this.state.eosPrice}</div>
+                    <div>Algorand / USD:</div>
+                    <div className="price">{this.state.algoPrice}</div>
                 </div>
             </div>
 
