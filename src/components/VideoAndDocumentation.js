@@ -1,14 +1,15 @@
 import React from "react"
 import { connect } from "react-redux"
 import videoDbApi from "../apis/videoDBApi"
-import VideoList from "../components/VideoList"
+import DocsList from "../components/DocsList"
 import VideoDetail from "../components/VideoDetail"
 import PriceTicker from "./PriceTicker"
+import VideoList from "./VideoList"
 import { listofVideos } from "../actions"
-import "../styleSheets/App.css"
+import "../styleSheets/VideoAndDocumentation.css"
 
 
-class VideoPage extends React.Component {
+class VideoAndDocumentation extends React.Component {
 
 
     componentDidMount() {
@@ -23,25 +24,32 @@ class VideoPage extends React.Component {
         } else if (this.props.location.pathname === "/blockchain") {
             this.props.listofVideos("blockchain")
         } else if (this.props.location.pathname === "/") {
-            this.props.listofVideos("currency")
+            this.props.listofVideos("emerging")
         } else {
             this.props.listofVideos("currency") 
         }
     }
 
     render() {
-        console.log("Props.videos: ",this.props.videos)
         return (
                 <div className="video-page-main">
                     <div id="price-tracker"><PriceTicker /></div>
-                    <div className="ui container">
-                        <div className="ui grid">
-                            <div className="ui row">
-                                <div className="eleven wide column">
-                                    <VideoDetail video={this.props.video} videos={this.props.videos} />
+                    <div>
+                        <div>
+                            <div className="outer-edge">
+                                <div id="video-class">
+                                    <h3 id="video-title">Prominent Commentary</h3>
+                                    <div className="video-player">
+                                        <VideoDetail video={this.props.video} videos={this.props.videos} />
+                                    </div>
+                                    <div id="video-list">
+                                        <h3 id="library-title">Video Library</h3>
+                                        <VideoList />
+                                    </div>
                                 </div>
-                                <div className="five wide column">
-                                    <VideoList />
+                                <div  id="documentation-class">
+                                    <h3 id="documentation-title">Emergent Documentation</h3>
+                                    <DocsList />
                                 </div>
                             </div>
                         </div>
@@ -58,4 +66,4 @@ const mapStateToProps = state => {
 export default connect(
     mapStateToProps,
     { listofVideos }
-    )(VideoPage)
+    )(VideoAndDocumentation)

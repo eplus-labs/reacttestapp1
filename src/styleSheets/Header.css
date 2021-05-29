@@ -1,3 +1,21 @@
 * {
     padding-top: .1vh;
 }
+
+#header-main {
+    height: 3.5vh;
+    align-items: center;
+}
+
+#left-menus {
+    align-items: center;
+}
+
+#google-auth {
+    margin-top: .8vh;
+}
+
+#primary-title {
+    margin-left: 30vw;
+    padding-bottom: 1vh;;
+}

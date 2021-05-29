@@ -34,27 +34,32 @@ class Header extends React.Component {
     render() {
         return (
             <div className="ui secondary pointing menu" id="header-main">
-            <Dropdown trigger={education} pointing='top left' icon={null}>
-                <Dropdown.Menu>
-                    <Dropdown.Item text='Currency' icon='dollar sign' as={Link} to='/currency'/>
-                    <Dropdown.Item text='Ethereum' icon='ethereum' as={Link} to='/ethereum'/>
-                    <Dropdown.Item text='Non Fungible Tokens' icon='code' as={Link} to='/nft'/>
-                    <Dropdown.Item text='Blockchain Concepts' icon='chain' as={Link} to='/blockchain'/>
-                    <Dropdown.Item text='Decentralized Finance' icon='money bill alternate outline' as={Link} to='/defi'/>
-                </Dropdown.Menu>
-            </Dropdown>
+                <div id="left-menus">
+                    <Dropdown trigger={education} pointing='top left' icon={null}>
+                    <Dropdown.Menu>
+                        <Dropdown.Item text='Currency' icon='dollar sign' as={Link} to='/currency'/>
+                        <Dropdown.Item text='Ethereum' icon='ethereum' as={Link} to='/ethereum'/>
+                        <Dropdown.Item text='Non Fungible Tokens' icon='code' as={Link} to='/nft'/>
+                        <Dropdown.Item text='Blockchain Concepts' icon='chain' as={Link} to='/blockchain'/>
+                        <Dropdown.Item text='Decentralized Finance' icon='money bill alternate outline' as={Link} to='/defi'/>
+                    </Dropdown.Menu>
+                    </Dropdown>
 
-            <Dropdown trigger={blockchain} pointing='top left' icon={null}>
-                <Dropdown.Menu>
-                    <Dropdown.Item text='Lottery App' icon='dollar sign' as={Link} to='/lotteryhome'/>
-                    <Dropdown.Item text='Crypto Crowd Source' icon='ethereum' as={Link} to='/campaigns'/>
-                    <Dropdown.Item text='Blockchain Events' icon='code' as={Link} to="/chaineventsmain"/>
-                </Dropdown.Menu>
-            </Dropdown>
-
-                <div className="right menu">
-                    <GoogleAuth />
+                    <Dropdown trigger={blockchain} pointing='top left' icon={null}>
+                        <Dropdown.Menu>
+                            <Dropdown.Item text='Lottery App' icon='dollar sign' as={Link} to='/lotteryhome'/>
+                            <Dropdown.Item text='Crypto Crowd Source' icon='ethereum' as={Link} to='/campaigns'/>
+                            <Dropdown.Item text='Blockchain Events' icon='code' as={Link} to="/chaineventsmain"/>
+                        </Dropdown.Menu>
+                    </Dropdown>
                 </div>
+
+
+                <h3 id="primary-title">Blockchain Emerging Technologies</h3>
+
+                    <div className="right menu" id="google-auth">
+                        <GoogleAuth />
+                    </div>
             </div>
         )
     }    

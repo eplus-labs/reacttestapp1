@@ -1,0 +1,63 @@
+#main-heading {
+    padding-left: 20vw;
+    color: whitesmoke;
+    text-shadow: #2a1b4d 0vw 0vw .1vw;
+}
+
+.outer-edge {
+    display: flex;
+    flex-direction: row;
+}
+
+.main-heading {
+    padding-left: 35vw;
+    color: whitesmoke;
+    text-shadow: #2a1b4d 0vw 0vw .1vw;
+}
+
+#video-class {
+    height: 180vh;
+    width: 65vw;
+    padding: 1vw;
+}
+
+#video-title {
+    margin-left: 15vw;
+    padding-left: 8vw;
+    text-shadow: #2a1b4d 0vw 0vw .1vw;
+}
+
+#library-title {
+    margin-left: 15vw;
+    padding-left: 8vw;
+    text-shadow: #2a1b4d 0vw 0vw .1vw;  
+}
+
+.video-player {
+    width: 40vw;
+    margin-left: 10vw;
+}
+
+#video-list {
+    margin: 3vh;
+    border: #2a3c63;
+    border-style: solid;
+    border-width: .5vh;
+    box-shadow: .2vh .2vh .5vh;
+    border-radius: 1.2vh;
+    margin-top: 3vh;
+    height: 115vh;
+    padding-left: 3vw;    
+}
+
+#documentation-class {
+    height: 180vh;
+    width: 35vw;
+    background: #2a3c63;
+}
+
+#documentation-title {
+    margin-left: 2vw;
+    padding-left: 8vw;
+    text-shadow: #2a1b4d 0vw 0vw .1vw;
+}

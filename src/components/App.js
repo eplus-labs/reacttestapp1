@@ -11,6 +11,7 @@ import CampaignRequestList from "./kickstart/CampaignRequestList"
 import ChainEventsMain from "./chainEvents/ChainEventsMain"
 import CampaignRequestNew from "./kickstart/CampaignRequestNew"
 import VideoPost from "./VideoPost"
+import VideoAndDocumentation from "./VideoAndDocumentation"
 
 const App = () => {
     return (
@@ -18,7 +19,8 @@ const App = () => {
             <BrowserRouter>
                 <div className="main-app">
                     <Header />
-                    <Route exact path="/" component={VideoPage} />
+                    <Route exact path="/" component={VideoAndDocumentation} />
+                    <Route exact path="/videoanddoc" component={VideoAndDocumentation} />
                     <Route path="/priceticker" component={PriceTicker} />
                     <Route path="/lotteryhome" component={LotteryHome} />
                     <Route path="/currency" component={VideoPage} />
